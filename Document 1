@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+<xsl:template match="/Etudiants">
+<html>
+<head>
+<title>Liste des étudiants</title>
+</head>
+<body>
+<h1 style="text-align:center">Liste des étudiants:</h1>
+<table border="1">
+<tr>
+<th>CNE</th>
+<th> Nom</th>
+<th>Prenom</th>
+<th>Sexe</th>
+<th>Photo</th>
+</tr>
+<tr>
+<td> <xsl:value-of select="./Etudiant/@CNE" /></td>
+<td> <xsl:value-of select="./Etudiant/Nom" /></td>
+<td><xsl:value-of select="./Etudiant/Prenom" /></td>
+<td><xsl:value-of select="./Etudiant/@Sexe" /></td>
+<td><xsl:value-of select="./Etudiant/Photo/@Source" />.<xsl:value-of
+select="./Etudiant/Photo/@Type"/></td>
+</tr>
+</table>
+</body>
+</html>
+</xsl:template>
+</xsl:stylesheet>

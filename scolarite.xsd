@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+  <!-- Definition of simple types -->
+  <xs:simpleType name="SexeType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Masculin"/>
+      <xs:enumeration value="Feminin"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="TeleType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+
+  <xs:simpleType name="EmailType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Personnel"/>
+      <xs:enumeration value="Academique"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Definition of complex types -->
+  <xs:element name="Scolarite">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="Enseignants"/>
+         <xs:element ref="Etudiants"/>
+          <xs:element ref="Modules"/>
+           <xs:element ref="Matieres"/>
+           <xs:element ref="notes"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="Nom" type="xs:string"/>
+  <xs:element name="CIN" type="xs:ID"/>
+  <xs:element name="Sexe" type="SexeType"/>
+  <xs:element name="Prenom" type="xs:string"/>
+  <xs:element name="Tele" type="TeleType"/>
+  <xs:element name="dateNaiss" type="TeleType"/>
+  <xs:element name="codeModule" type="xs:ID"/>
+  <xs:element name="cordonnateur" type="xs:IDREF"/>
+  
+    <xs:element name="codeMatiere" type="xs:ID"/>
+    <xs:element name="intitule" type="xs:string"/>
+    <xs:element name="coeff" type="xs:string"/>
+    
+
+  <xs:element name="Email">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute name="Type" type="EmailType" use="required"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  
+<xs:element name="adresse">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="rue"/>
+<xs:element name="numero"/>
+<xs:element name="ville"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+
+
+    <xs:element name="note">
+      <xs:complexType>
+    <xs:sequence>
+      <xs:element name="NoteType"/>
+      <xs:element name="valeur" type="xs:string"/>
+    </xs:sequence>
+            <xs:attribute name="NInsc" type="xs:IDREF" use="required"/>
+          <xs:attribute name="codeMatiere" type="xs:IDREF" use="required"/>
+   </xs:complexType>
+   </xs:element>
+
+   <xs:element name="notes">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="note" minOccurs="1" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+
+  <xs:simpleType name="NoteType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="DS"/>
+      <xs:enumeration value="Examen"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+<xs:element name="Module">
+    <xs:complexType>
+    <xs:sequence>
+    <xs:element name="Nom"/>
+    </xs:sequence>
+      <xs:attribute name="codeModule" type="xs:ID" use="required"/>
+      <xs:attribute name="NSom" type="xs:IDREF" use="required"/>
+    </xs:complexType>
+     </xs:element>
+
+     <xs:element name="Modules">
+      <xs:complexType>
+        <xs:sequence>
+          <xs:element ref="Module" minOccurs="1" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:element>
+
+    <xs:element name="Matiere">
+    <xs:complexType>
+    <xs:sequence>
+    <xs:element name="intitule"/>
+    <xs:element name="coeff"/>
+    </xs:sequence>
+          <xs:attribute name="NSom" type="xs:IDREF" use="required"/>
+          <xs:attribute name="codeModule" type="xs:IDREF" use="required"/>
+          <xs:attribute name="codeMatiere" type="xs:ID" use="required"/>
+    </xs:complexType>
+     </xs:element>
+     
+  <xs:element name="Enseignants">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="Enseignant" minOccurs="1" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="Matieres">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="Matiere" minOccurs="1" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="Enseignant">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="CIN"/>
+        <xs:element ref="Sexe"/>
+        <xs:element ref="Nom"/>
+        <xs:element ref="Prenom"/>
+        <xs:element ref="Teles"/>
+        <xs:element ref="Emails"/>
+      </xs:sequence>
+      <xs:attribute name="NSom" type="xs:ID" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  
+ <xs:element name="Etudiants">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="Etudiant" minOccurs="1" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="Emails">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="Email" minOccurs="1" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+   <xs:element name="Teles">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="Tele" minOccurs="1" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+<xs:element name="Etudiant">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="CIN"/>
+        <xs:element ref="Sexe"/>
+        <xs:element ref="Prenom"/>
+        <xs:element ref="Nom"/>
+        <xs:element ref="Teles"/>
+        <xs:element ref="Emails"/>
+        <xs:element ref="dateNaiss"/>
+        <xs:element ref="adresse" minOccurs="1" maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attribute name="NInsc" type="xs:ID" use="required"/>
+    </xs:complexType>
+  </xs:element>
+
+
+</xs:schema>

@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="scolarite.xsl"?>
+<?xml-stylesheet type="text/xsl" href="style.css"?>
+<Scolarite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="scolarite.xsd">
+<Enseignants>
+  <Enseignant NSom="E123">
+    <CIN>HH123456789</CIN>
+    <Sexe>Masculin</Sexe>
+    <Nom>Doe</Nom>
+    <Prenom>John</Prenom>
+    <Teles>
+      <Tele>1234</Tele>
+      <Tele>98765</Tele>
+    </Teles>
+    <Emails>
+      <Email Type="Personnel">john.doe@example.com</Email>
+      <Email Type="Academique">john.doe@university.edu</Email>
+    </Emails>
+  </Enseignant>
+  <Enseignant NSom="E124">
+    <CIN>HH85026</CIN>
+    <Sexe>Feminin</Sexe>
+    <Nom>BENZARIYA</Nom>
+    <Prenom>Saida</Prenom>
+    <Teles>
+      <Tele>06273737</Tele>
+      <Tele>06273737</Tele>
+    </Teles>
+    <Emails>
+      <Email Type="Personnel">john.doe@example.com</Email>
+      <Email Type="Academique">john.doe@university.edu</Email>
+    </Emails>
+   
+  </Enseignant>
+</Enseignants>
+<Etudiants>
+  <Etudiant NInsc="S456">
+    <CIN>HH987321</CIN>
+    <Sexe>Feminin</Sexe>
+    <Prenom>Jane</Prenom>
+    <Nom>soso</Nom>
+    <Teles>
+      <Tele>555-555-5555</Tele>
+    </Teles>
+    <Emails>
+      <Email Type="Personnel">jane.smith@example.com</Email>
+    </Emails>
+    <dateNaiss>2000-01-01</dateNaiss>
+      <adresse>
+        <rue>Main Street</rue>
+        <numero>123</numero>
+        <ville>Cityville</ville>
+      </adresse>
+  </Etudiant>
+
+  <Etudiant NInsc="S457">
+    <CIN>HH9873</CIN>
+    <Sexe>Feminin</Sexe>
+    <Prenom>Jane</Prenom>
+    <Nom>Smith</Nom>
+    <Teles>
+      <Tele>555-555-5555</Tele>
+    </Teles>
+    <Emails>
+      <Email Type="Personnel">jane.smith@example.com</Email>
+    </Emails>
+    <dateNaiss>2000-01-01</dateNaiss>
+      <adresse>
+        <rue>Main Street</rue>
+        <numero>123</numero>
+        <ville>Cityville</ville>
+      </adresse>
+  </Etudiant>
+</Etudiants>
+
+<Modules>
+  <Module codeModule="M123" NSom="E123">
+      <Nom>Programming</Nom>
+  </Module>
+  <Module codeModule="M124" NSom="E123">
+    <Nom>java</Nom>
+</Module>
+</Modules>
+
+<Matieres>
+  <Matiere NSom="E123" codeModule="M123" codeMatiere="CS101">
+    <intitule>Introduction to Computer Science</intitule>
+    <coeff>3</coeff>
+  </Matiere>
+
+  <Matiere NSom="E124" codeModule="M124" codeMatiere="CS102">
+    <intitule>Data science</intitule>
+    <coeff>2</coeff>
+  </Matiere>
+
+  <Matiere NSom="E124" codeModule="M124" codeMatiere="CS103">
+    <intitule>Data</intitule>
+    <coeff>4</coeff>
+  </Matiere>
+</Matieres>
+
+<notes>
+  <note NInsc="S456" codeMatiere="CS101">
+    <NoteType>DS</NoteType>
+    <valeur>85.5</valeur>
+  </note>
+
+  <note NInsc="S456" codeMatiere="CS101">
+    <NoteType>Examen</NoteType>
+    <valeur>18</valeur>
+  </note>
+
+  <note NInsc="S457" codeMatiere="CS101">
+    <NoteType>Examen</NoteType>
+    <valeur>18</valeur>
+  </note>
+
+</notes>
+</Scolarite>
